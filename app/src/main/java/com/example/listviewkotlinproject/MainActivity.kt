@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     //если я правильно понял в response хранится весь ответ в формате json
                     // но чет не очень понял что хранить call
-                    
+
                     var listMsg = response.body()
                     var length = listMsg!!.size
 
