@@ -4,7 +4,10 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Adapter
 import android.widget.ListView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,15 +19,21 @@ class MainActivity : AppCompatActivity() {
 
     val baseURL = "https://rawgit.com/startandroid/data/master/messages/"
     var listmassge: List<Massage>? = null
-    private lateinit var listView: ListView
+
     private var adapter:MsgAdapter? = null
+    private lateinit var listView: ListView
+    private lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var recyclerView:RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         getMessage(this)
 
-        listView = findViewById<ListView>(R.id.listview)
+
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
         //создаем адаптер что бы потом поместить его в лист
         // для этого используем свой переопределенный адаптер
 
@@ -62,6 +71,8 @@ class MainActivity : AppCompatActivity() {
                         listmassge = listMsg
                         adapter = MsgAdapter(context as MainActivity, listmassge!!)
                         listView.adapter = adapter
+
+                        recyclerView.adapter =RecyclerAdapter(context, listmassge!! )
                     }
 
 
