@@ -27,12 +27,12 @@ class RecyclerAdapter(var context :Context, var list: List<Massage>) : RecyclerV
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder?.itemTextID?.text = list[position].id.toString()
-        holder?.itemText?.text = list[position].text
+        holder.itemTextID?.text = list[position].id.toString()
+        holder.itemText?.text = list[position].text
         if(list[position].image!="")
-            Picasso.with(context).load(list[position].image).placeholder(R.mipmap.ic_launcher).into(holder?.itemImageView)
+            Picasso.with(context).load(list[position].image).placeholder(R.mipmap.ic_launcher).into(holder.itemImageView)
         else
-            Picasso.with(context).load(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(holder?.itemImageView)
+            Picasso.with(context).load(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(holder.itemImageView)
     }
 
     class ViewHolder(itemView: View?):RecyclerView.ViewHolder(itemView!!){
