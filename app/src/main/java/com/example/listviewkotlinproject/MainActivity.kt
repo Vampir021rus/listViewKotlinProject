@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
     var listmassge: List<Massage>? = null
 
     private var adapter:MsgAdapter? = null
+
     private lateinit var listView: ListView
-    private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var recyclerView:RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+
+        listView = findViewById(R.id.listview)
         //создаем адаптер что бы потом поместить его в лист
         // для этого используем свой переопределенный адаптер
 
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                     {
                         listmassge = listMsg
                         adapter = MsgAdapter(context as MainActivity, listmassge!!)
-                        listView.adapter = adapter
+                    //    listView.adapter = adapter
 
                         recyclerView.adapter =RecyclerAdapter(context, listmassge!! )
                     }
